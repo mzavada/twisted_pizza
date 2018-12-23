@@ -1,0 +1,72 @@
+.features {
+    background-color: $color-light;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+    &__image {
+        max-width: 100%;
+    }
+
+    &__card {
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, .4);
+        width: 90vw;
+        margin-top: 20px;
+        text-align: center;
+        position: relative;
+    }
+
+    &__title {
+        font-size: 2rem;
+        margin: 15px 0px;
+    }
+
+    &__content {
+        padding: 0 25px;
+    }
+
+    &__button {
+        position: relative;
+        border: none;
+        background-color: $color-light;
+        padding: 0;
+    }
+
+    &__link {
+        position: relative;
+        display: block;
+        color: $color-primary;
+        font-size: 1.1rem;
+        text-decoration: none;
+        margin: 15px 0;
+        border: 2px solid $color-primary;
+        border-radius: 10px;
+        padding: 10px 40px;
+        text-transform: uppercase;
+        overflow: hidden;
+        transition: 1s all ease;
+        z-index: 1;
+
+        &:hover {
+            color: $color-light;
+        }
+
+        &::before {
+            background: $color-primary;
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            z-index: -1;
+            transition: all 0.6s ease;
+            width: 100%;
+            height: 0%;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        &:hover::before {
+            height: 400%;
+        }
+    }
+}

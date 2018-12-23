@@ -1,0 +1,1 @@
+let header=document.getElementById("header"),headerNav=document.getElementById("header__nav");window.onscroll=function(){window.pageYOffset>50?(header.classList.add("header__solid"),headerNav.classList.add("header__solid")):(header.classList.remove("header__solid"),headerNav.classList.remove("header__solid"))};

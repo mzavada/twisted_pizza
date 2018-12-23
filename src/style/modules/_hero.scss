@@ -1,0 +1,46 @@
+.hero {
+    background-image: url("../images/pizza-1573562_1920.jpg");
+    background-size: cover;
+    width: 100%;
+    height: 75vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 2fr 1fr;
+    text-align: left;
+}
+
+.hero__title {
+    font-family: $font-primary;
+    font-size: 2.5rem;
+    font-weight: bold;
+    letter-spacing: .3rem;
+    color: $color-light;
+    text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4),
+        0px 8px 13px rgba(0, 0, 0, 0.1),
+        0px 18px 23px rgba(0, 0, 0, 0.1);
+    margin: 0 10px auto 10px;
+    padding: 0 10px;
+    align-self: initial;
+    // background-color: $color-light-50;
+}
+
+.hero__phonenumber {
+
+    font-family: $font-primary;
+    font-size: 1.8rem;
+    font-weight: bold;
+    letter-spacing: .3rem;
+    color: $color-light;
+    background-color: $color-primary-80;
+    align-self: end;
+    margin: auto auto 10px 10px;
+    padding: 0 10px;
+}
+
+
+.hero__twisted-text {
+    font-family: $font-logo;
+    font-size: 3rem;
+    // color: $color-primary;
+
+}

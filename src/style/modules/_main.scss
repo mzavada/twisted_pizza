@@ -1,0 +1,77 @@
+.mission {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 20px;
+    padding: 0 15px;
+    text-align: justify;
+    align-items: center;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 20px;
+    padding: 0 15px;
+    text-align: justify;
+
+    &__card {
+        margin-top: 20px;
+        width: 90vw;
+        background-color: $color-secondary;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, .4);
+        color: $color-light;
+        padding: 15px;
+    }
+
+    &__title {
+        border-width: 1px 0;
+        border-style: solid;
+        border-color: $color-light;
+        text-align: center;
+    }
+
+    &__text {
+        padding: 0 15px;
+    }
+
+    &__avatar-card {
+        display: block;
+        width: 100%;
+        height: auto;
+        background-color: $color-light;
+        color: $color-secondary;
+        margin-top: 15px;
+    }
+
+    &__avatar-name {
+        font-family: $font-logo;
+        font-size: 1.5rem;
+        font-weight: 900;
+        color: $color-primary;
+        padding: 15px;
+        margin: 0;
+    }
+
+    &__avatar {
+        width: 100px;
+        height: auto;
+        border: none;
+        border-radius: 50% 50% 5% 50%;
+        float: left;
+        margin: 15px 15px 0;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, .4);
+
+
+        &--right {
+            float: right;
+            border-radius: 50% 50% 50% 5%;
+        }
+    }
+
+    &__avatar-bio {
+        text-align: left;
+        padding: 0 15px 15px;
+        margin: 0;
+    }
+}

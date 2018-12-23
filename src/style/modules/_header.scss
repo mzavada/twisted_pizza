@@ -1,0 +1,196 @@
+.header {
+    text-align: center;
+    position: fixed;
+    z-index: 999;
+    width: 100%;
+    background-color: transparent;
+    transition: background-color 0.5s ease;
+}
+
+.header__logo {
+    font-family: $font-logo;
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: $color-light;
+    margin: 0;
+}
+
+// ---------------------
+// Navigation
+// ----------------------
+.header__nav {
+    position: absolute;
+    text-align: left;
+    top: 100%;
+    left: 0;
+    background-color: transparent;
+    width: 100%;
+    transform: scale(1, 0);
+    transform-origin: top;
+    transition: transform 400ms ease-in-out;
+    transition: background-color 0.5s ease;
+    border-top-width: 5px;
+    border-top-style: solid;
+    border-top-color: transparent;
+}
+
+
+.header__solid {
+    background-color: $color-primary;
+    box-shadow: 0px 8px 25px -10px rgba(0, 0, 0, .4);
+
+}
+
+.header__nav-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.header__nav-item {
+    margin-bottom: 1em;
+    margin-left: 1em;
+}
+
+.header__nav-link {
+    color: $color-light;
+    text-decoration: none;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    opacity: 0;
+    transition: opacity 150ms ease-in-out;
+}
+
+.header__nav-link:hover {
+    color: $color-light;
+
+}
+
+// Navigation toggle button
+
+.header__nav-toggle-label {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin-left: 1em;
+    // Following allows toggle to be aligned center vertically
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+// Toggle button (the 3 lines)
+
+.header__nav-toggle-button,
+.header__nav-toggle-button::before,
+.header__nav-toggle-button::after {
+    display: block;
+    background-color: $color-light;
+    height: 2px;
+    width: 2em;
+    border-radius: 2px;
+    position: relative;
+}
+
+.header__nav-toggle-button::before,
+.header__nav-toggle-button::after {
+    content: '';
+    position: absolute;
+}
+
+.header__nav-toggle-button::before {
+    bottom: 7px;
+}
+
+.header__nav-toggle-button::after {
+    top: 7px;
+}
+
+// Hide check box
+.header__nav-toggle {
+    display: none;
+}
+
+// Target the header__nav that is a sibling of the checkbox when checked
+.header__nav-toggle:checked~.header__nav {
+    transform: scale(1, 1);
+}
+
+.header__nav-toggle:checked~.header__nav .header__nav-link {
+    opacity: 1;
+    // Delay transition to allow nav to slide down before showing links
+    transition: opacity 250ms ease-in-out 300ms;
+
+}
+
+// Media queries
+
+// Medium to large screens
+@media screen and (min-width: 916px) {
+
+    // Create grid layout
+    .header {
+        display: grid;
+        grid-template-columns: 1fr auto minmax(660px, 3fr) 1fr;
+    }
+
+    // Hide toggle button
+    .header__nav-toggle-label {
+        display: none;
+    }
+
+    .header__logo {
+        grid-column: 2 / 3;
+    }
+
+    .header__nav {
+        // Remove all previous settings from up above
+        all: unset;
+        grid-column: 3 / 4;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    .header__nav-list {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .header__nav-item {
+        margin-bottom: 0;
+        margin-left: 3em;
+    }
+
+    .header__nav-link {
+        opacity: 1;
+        position: relative;
+    }
+
+    // Hover over lines above and below links
+    .header__nav-link:before,
+    .header__nav-link:after {
+        content: '';
+        display: block;
+        height: 2px;
+        background-color: $color-light;
+        position: absolute;
+        left: 0;
+        right: 0;
+        transform: scale(0, 1);
+        transition: transform ease-in-out 250ms;
+    }
+
+    .header__nav-link:before {
+        top: -.5em;
+    }
+
+    .header__nav-link:after {
+        bottom: -.5em;
+    }
+
+    .header__nav-link:hover::before,
+    .header__nav-link:hover::after {
+        transform: scale(1, 1);
+    }
+}
