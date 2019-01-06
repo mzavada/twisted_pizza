@@ -3,13 +3,33 @@
   "version": "1.0.0",
   "description": "Website for Twisted Pizza in Blairsville, GA",
   "main": "index.html",
+  "homepage": "https://mzavada.github.io/twisted_pizza",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "deploy": "gh-pages -d dist",
+    "scss": "node-sass --output-style compressed -o dist/css src/style",
+    "autoprefixer": "postcss -u autoprefixer -r dist/css/*",
+    "lint": "eslint src/script",
+    "babel": "babel src/script/app.js -o dist/script/app.js --presets=@babel/env",
+    "imagemin": "imagemin src/images/*.* --out-dir=dist/images  --plugin=jpeg-recompress",
+    "minify": "minify dist/script/app.js -o dist/script/app.js",
+    "serve": "browser-sync start --server dist --files 'dist/css/*.css, dist/script/*.js, dist/*.html'",
+    "copy:html": "copyfiles -f src/*.html dist",
+    "build:css": "npm run scss && npm run autoprefixer",
+    "build:js": "npm run lint && npm run babel && npm run minify",
+    "build:images": "npm run imagemin",
+    "build:all": "npm run build:css && npm run build:js && npm run build:images",
+    "watch:css": "onchange 'src/style/*.scss' -- npm run build:css",
+    "watch:js": "onchange 'src/script/*.js' -- npm run build:js",
+    "watch:html": "onchange -v \"src/*.html\" -- npm run copy:html",
+    "watch:all": "parallelshell \"npm run serve\" \"npm run watch:css\" \"npm run watch:js\" \"npm run watch:html\""
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mzavada/twisted_pizza.git"
   },
+  "browserslist": [
+    "cover 99.5% in US"
+  ],
   "keywords": [
     "Pizza",
     "Blairsville",
@@ -22,11 +42,20 @@
   "bugs": {
     "url": "https://github.com/mzavada/twisted_pizza/issues"
   },
-  "homepage": "https://github.com/mzavada/twisted_pizza#readme",
   "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
     "autoprefixer": "^9.4.3",
+    "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
     "browser-sync": "^2.26.3",
     "cssnano": "^4.1.8",
+    "eslint": "^2.13.1",
+    "eslint-config-standard": "^5.3.1",
+    "eslint-plugin-promise": "^1.3.0",
+    "eslint-plugin-standard": "^1.3.2",
     "gulp": "^4.0.0",
     "gulp-imagemin": "^5.0.3",
     "gulp-postcss": "^8.0.0",
@@ -34,8 +63,24 @@
     "gulp-sourcemaps": "^2.6.4",
     "gulp-terser": "^1.1.6",
     "gulp-uglify": "^3.0.1",
+    "imagemin-cli": "^3.0.0",
     "imagemin-jpeg-recompress": "^6.0.0",
     "imagemin-jpegtran": "^6.0.0",
-    "imagemin-pngquant": "^6.0.0"
+    "imagemin-pngquant": "^6.0.0",
+    "mkdirp": "^0.5.1",
+    "node-sass": "^3.7.0",
+    "npm-run-all": "^2.1.1",
+    "onchange": "^2.5.0",
+    "parallelshell": "^3.0.1",
+    "postcss": "^7.0.7",
+    "postcss-cli": "^2.5.2",
+    "rimraf": "^2.5.4",
+    "stylelint": "^7.8.0",
+    "svg-sprite-generator": "0.0.7",
+    "svgo": "^0.6.6",
+    "uglify-js": "^2.6.2"
+  },
+  "dependencies": {
+    "gh-pages": "^2.0.1"
   }
 }
